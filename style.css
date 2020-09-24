@@ -1,8 +1,51 @@
-body, html { 
-   text-align: center;
-} 
-  
-#canvas { 
-    border: 1px solid black; 
-} 
+html, body, .grid-container { height: 100%; margin: 0; }
 
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  grid-template-rows: .5fr 1fr 1fr 1fr;
+  gap: 1px 1px;
+  grid-template-areas:
+    "Title Title"
+    "Score-Card Photos"
+    "Questions Photos"
+    "Responses Photos";
+}
+
+.Title { grid-area: Title; }
+
+.Score-Card { grid-area: Score-Card; }
+
+.Questions { grid-area: Questions; }
+
+.Photos { grid-area: Photos; }
+
+.Responses { grid-area: Responses; }
+
+
+/* For presentation only, no need to copy the code below */
+.grid-container * {
+  border: 2px solid black;
+  position: relative;
+}
+
+/* .grid-container *:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+} */
+
+#a, #b, #c, #d {
+  margin: 5px 0px 0px 0px;
+  width: 49%;
+  height: 49%
+}
+.Title {
+  text-align: center;
+  border-style: none;
+}
+
+.image {
+    width: 75vw;
+    height: 50vw;
+}
