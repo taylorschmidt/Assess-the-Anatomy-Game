@@ -2,6 +2,15 @@
 const gameStatusBox = document.querySelector('.gameStatus')
 const playerOneScoreBox = document.querySelector('.oneScore')
 const playerTwoScoreBox = document.querySelector('.twoScore')
+const questionBox = document.querySelector('.Questions')
+const aChoice = document.querySelector('#a')
+const bChoice = document.querySelector('#b')
+const cChoice = document.querySelector('#c')
+const dChoice = document.querySelector('#d')
+       
+
+
+
 let playerOneScore = 0
 let playerTwoScore = 0
 playerOneScoreBox.innerText = 'Player One\'s Score: ' + playerOneScore
@@ -104,12 +113,87 @@ const questions = [
   correctAns: 'Patella',
   photo: 'https://images-na.ssl-images-amazon.com/images/I/41WlaUQp7gL._SX342_.jpg'
 },
-//two more bone questions
-//ten more muscle questions
-
+{
+  question: 'What bone is pictured?',
+  answers: {
+    a: 'Sternum',
+    b: 'Cervix',
+    c: 'Sacrum',
+    d: 'Scapula'
+  },
+  correctAns: 'Scapula',
+  photo: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fkidport.com%2FRefLib%2FScience%2FHumanBody%2FSkeletalSystem%2FSacrum.htm&psig=AOvVaw2tRbm7Rnq0rJJwtYCjDAEG&ust=1601591983731000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCODxpbb_kewCFQAAAAAdAAAAABAD'
+},
+{
+  question: 'What bone is pictured?',
+  answers: {
+    a: 'Sternum',
+    b: 'Fibula',
+    c: 'Clavicle',
+    d: 'Ulna'
+  },
+  correctAns: 'Clavicle',
+  photo: 'https://www.tornado-studios.com/sites/default/files/styles/slider_full/public/products/2178/gallery/human_clavicle_bone_collarbone_01_thumbnail_square_0000.jpg?itok=HKzD7GUA'
+},
+{
+  question: 'What muscle is pictured?',
+  answers: {
+    a: 'Sartorius',
+    b: 'Gastrocnemius',
+    c: 'Quadricep',
+    d: 'Biceps femoris'
+  },
+  correctAns: 'Sartorius',
+  photo: 'https://i.imgur.com/sER0dez.png'
+},
+{
+  question: 'What muscle is pictured?',
+  answers: {
+    a: 'Gastrocnemius',
+    b: 'Tibialis anterior',
+    c: 'Rectus femoris',
+    d: 'Soleus'
+  },
+  correctAns: 'Tibialis anterior',
+  photo: 'https://i.imgur.com/lXG5xLP.png'
+},
+{
+  question: 'What muscle is pictured?',
+  answers: {
+    a: 'Triceps',
+    b: 'Deltoid',
+    c: 'Biceps brachii',
+    d: 'Soleus'
+  },
+  correctAns: 'Biceps brachii',
+  photo: 'https://i.imgur.com/oOi7HcU.png'
+},
+{  
+  question: 'What muscle is pictured?',
+  answers: {
+    a: 'Sartorius',
+    b: 'Dorsi',
+    c: 'Obliques',
+   d: 'Ab rectus'
+  },
+  correctAns: 'Ab rectus',
+  photo: 'https://i.imgur.com/PUHoZKI.png'
+},
+{  
+  question: 'What muscle is pictured?',
+  answers: {
+    a: 'Deltoid',
+    b: 'Trapezius',
+    c: 'Obliques',
+   d: 'Pectoralis'
+  },
+  correctAns: 'Deltoid',
+  photo: 'https://i.imgur.com/Sc5Bm8G.png'
+},
+//if time, add more muscles questions
 ]
-  
-  const game = {
+
+const game = {
     currentSet: null, 
 
     //start function
@@ -127,16 +211,12 @@ const questions = [
         console.log(game.currentSet)
         console.log(game.currentSet.correctAns)
         //add question from randomly selected question
-        const questionBox = document.querySelector('.Questions')
         questionBox.innerText = game.currentSet.question
         //add answers from randomly selected question
-        const aChoice = document.querySelector('#a')
+        
         aChoice.innerText = game.currentSet.answers.a
-        const bChoice = document.querySelector('#b')
         bChoice.innerText = game.currentSet.answers.b
-        const cChoice = document.querySelector('#c')
         cChoice.innerText = game.currentSet.answers.c
-        const dChoice = document.querySelector('#d')
         dChoice.innerText = game.currentSet.answers.d
       
       //add photo to photo class      
@@ -218,9 +298,18 @@ const questions = [
       //invoke first question function
     },
 
+   
     gameEnd: function () {
-      return game
-
+      aChoice.innerText = ''
+      bChoice.innerText = ''
+      cChoice.innerText = ''
+      dChoice.innerText = ''
+      questionBox.innerText=''
+      aChoice.removeEventListener('click', game.getAnswer)
+      bChoice.removeEventListener('click', game.getAnswer)
+      cChoice.removeEventListener('click', game.getAnswer)
+      dChoice.removeEventListener('click', game.getAnswer)
+  
     }
   } //end game object
   
