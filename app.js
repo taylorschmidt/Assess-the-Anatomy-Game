@@ -6,7 +6,8 @@ let playerOneScore = 0
 let playerTwoScore = 0
 playerOneScoreBox.innerText = 'Player One\'s Score: ' + playerOneScore
 playerTwoScoreBox.innerText = 'Player Two\'s Score: ' + playerTwoScore
-let currentPlayer = 'Player 1'
+let currentPlayer
+
 
 
 
@@ -14,64 +15,111 @@ const questions = [
     {
     question: 'What bone is pictured?',
     answers: {
-      a: 'Answer A ex1 This is the answer',
-      b: 'Answer B ex1',
-      c: 'Answer C ex1',
-      d: 'Answer D ex1'
+      a: 'Ulna',
+      b: 'Radius',
+      c: 'Patella',
+      d: 'Coccyx'
     },
-    correctAns: 'Answer A ex1 This is the answer',
-    photo: 'https://i.imgur.com/trbo1Whm.jpg'
+    correctAns: 'Radius',
+    photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Full_Anterior_View_of_Right_Radius.png/220px-Full_Anterior_View_of_Right_Radius.png'
     },
     {
-    question: 'Here is my example question two.',
+    question: 'What bone is pictured?',
     answers: {
-      a: 'Answer A ex2',
-      b: 'Answer B ex2',
-      c: 'Answer C ex 2',
-      d: 'Answer D ex2'
+      a: 'Fibula',
+      b: 'Radius',
+      c: 'Humerus',
+      d: 'Tibia'
     },
-    correctAns: 'Answer A ex2',
-    photo: 'https://www.w3schools.com/w3css/img_lights.jpg'
-    },
-    {
-        question: 'Here is my example question three.',
-        answers: {
-          a: 'Radius',
-          b: 'Ulna',
-          c: 'Femur',
-          d: 'Humerus'
-        },
-        correctAns: 'Ulna',
-        photo: 'https://i.imgur.com/UgYWLa3.jpg?1'
+    correctAns: 'Tibia',
+    photo: 'https://sites.google.com/site/skeletalsystemport/_/rsrc/1418767126751/tibia/tibia.jpg'
     },
     {
-        question: 'Here is my example question four.',
-        answers: {
-          a: 'Radius',
-          b: 'Ulna',
-          c: 'Femur',
-          d: 'Humerus'
-        },
-        correctAns: 'Ulna',
-        photo: 'https://i.imgur.com/UgYWLa3.jpg?1'
+    question: 'What bone is pictured?',
+    answers: {
+      a: 'Radius',
+      b: 'Ulna',
+      c: 'Femur',
+      d: 'Humerus'
+     },
+    correctAns: 'Ulna',
+    photo: 'https://cdn3.volusion.com/nqpvm.detql/v/vspfiles/photos/A45-2-2.jpg?v-cache=1594737065'
     },
-  ]
-  
+    {
+        question: 'What bones are pictured?',
+        answers: {
+          a: 'Metatarsals',
+          b: 'Phalanges',
+          c: 'Carpals',
+          d: 'Metacarpals'
+        },
+        correctAns: 'Metacarpals',
+        photo: 'https://www.orthopaedicsone.com/download/attachments/32179851/worddav33c4f7c8010ff76d06fd64265d010922.png?version=1&modificationDate=1270172536000'
+    },
+    {
+        question: 'What bone is pictured?',
+        answers: {
+          a: 'Clavicle',
+          b: 'Scapula',
+          c: 'Deltoid',
+          d: 'Sternum'
+        },
+        correctAns: 'Scapula',
+        photo: 'https://images-na.ssl-images-amazon.com/images/I/61iHK48Yn7L._SL1200_.jpg'
+    },
+    {
+      question: 'What bone is pictured?',
+      answers: {
+        a: 'Clavicle',
+        b: 'Scapula',
+        c: 'Humerus',
+        d: 'Femur'
+      },
+      correctAns: 'Femur',
+      photo: 'https://www.osteoporosisinstitute.org/wp-content/uploads/i02-Femurs.jpg'
+  },
+  {
+    question: 'What bone is pictured?',
+    answers: {
+      a: 'Rib',
+      b: 'Radius',
+      c: 'Fibula',
+      d: 'Carpal'
+    },
+    correctAns: 'Rib',
+    photo: 'https://cdn.shopify.com/s/files/1/1467/6660/products/Real-Human-Rib-_Single_--Main__SHN-18__1.jpg?v=1534882062'
+},
+{
+  question: 'What bone is pictured?',
+  answers: {
+    a: 'Sternum',
+    b: 'Tarsal',
+    c: 'Carpal',
+    d: 'Patella'
+  },
+  correctAns: 'Patella',
+  photo: 'https://images-na.ssl-images-amazon.com/images/I/41WlaUQp7gL._SX342_.jpg'
+}
+]
   
   const game = {
     //start function
     start: function () {
       //when start button is clicked
+      currentPlayer = 'Player 1'
       const startButton = document.querySelector('#start')
-      startButton.addEventListener('click', this.generateQuestion)
+      startButton.addEventListener('click', game.generateQuestion)
       //invoke first question function
     },
 
     generateQuestion: function () {
+        console.log(currentPlayer)
         const random = Math.floor(Math.random() * questions.length)
         const currentSet = questions[random]
+        //add question from randomly selected question
         const questionBox = document.querySelector('.Questions')
         questionBox.innerText = currentSet.question
+        //add answers from randomly selected question
         const aChoice = document.querySelector('#a')
         aChoice.innerText = currentSet.answers.a
         const bChoice = document.querySelector('#b')
@@ -91,26 +139,26 @@ const questions = [
         newImg.classList.add('image')
         imgBox.appendChild(newImg)
      
-      //get answer function within main create function
+      //get answer function within main create question function
         const getAnswer = (event) => {
-        //event.target.classList.add('pink')
             if (event.target.innerText === currentSet.correctAns) {
                 gameStatusBox.innerText = 'You got it right!'
                 //change current player's score
                 if (currentPlayer === 'Player 1') {
-                    playerOneScore ++
+                    playerOneScore += 1
                     playerOneScoreBox.innerText = 'Player One\'s Score: ' + playerOneScore
+                    setTimeout(game.checkWin, 1500)
                 } else if (currentPlayer === 'Player 2') {
-                    playerTwoScore ++
+                    playerTwoScore += 1
                     playerTwoScoreBox.innerText = 'Player Two\'s Score: ' + playerTwoScore
+                    setTimeout(game.checkWin, 1500)
                 }
-                setTimeout(checkWin, 1500)
-
-            } else {
-                gameStatusBox.innerText = 'You got it wrong!' 
-                setTimeout(checkWin, 1500)
-            }
-        }
+            } else if (event.target.innerText !== currentSet.correctAns) {
+                gameStatusBox.innerText = 'You got it wrong!'
+            //     setTimeout(game.switchPlayer, 1500)
+            setTimeout(game.checkWin, 1500)
+             }
+          }
     //invoke getAnswer function for buttons
         aChoice.addEventListener('click', getAnswer)
         bChoice.addEventListener('click', getAnswer)
@@ -119,38 +167,54 @@ const questions = [
     
     //splice used index so it isn't used again
     questions.splice(random, 1)
-    console.log(questions)
-    
-    } //end generateQuestion function
-  
+    console.log('here are the number of questions left: ' + questions.length)
+
+    }, //end generateQuestion function
+
+    checkWin: function() {
+        if(playerOneScore < 3 && playerTwoScore < 3) {
+            game.switchPlayer()
+            console.log('no winner...switching player')
+        } else if (playerOneScore >= 3) {
+            gameStatusBox.innerText = 'Player 1 Wins!'
+            // end game function
+            game.endGame()
+        } else if (playerTwoScore >= 3) {
+            gameStatusBox.innerText = 'Player 2 Wins!'
+            // end game function
+            game.endGame()
+        } 
+    },
+
+    switchPlayer: function() {
+        if(currentPlayer === 'Player 1') {
+            currentPlayer = 'Player 2'
+        } else if (currentPlayer === 'Player 2') {
+            currentPlayer = 'Player 1'
+        }
+        gameStatusBox.innerText = 'Time for ' + currentPlayer + '\'s turn!'
+        setTimeout(game.generateQuestion, 1000)
+    },
+
+    endGame: function() {
+      const title = document.querySelector('.Title')
+      const restartButton = document.createElement('button')
+      restartButton.innerText = 'Restart Game'
+      title.appendChild(restartButton)
+      const refreshPage = () => {
+        window.location.reload()
+      }
+      restartButton.addEventListener('click', refreshPage)
+    }
   } //end game object
   
+  //invoke start
+  game.start()
 
-const switchPlayer = () => {
-    if(currentPlayer === 'Player 1') {
-        currentPlayer = 'Player 2'
-    } else if (currentPlayer === 'Player 2') {
-        currentPlayer = 'Player 1'
-    }
-    gameStatusBox.innerText = 'Time for ' + currentPlayer + '\'s turn!'
-    game.generateQuestion()
-}
-
-//win conditional
-const checkWin = () => {
-    if (playerOneScore >= 5) {
-        gameStatusBox.innerText = 'Player 1 Wins!'
-        return game.generateQuestion()
-    } else if (playerTwoScore >= 5) {
-        gameStatusBox.innerText = 'Player 2 Wins!'
-    } else {
-        switchPlayer()
-    }
-}
-
-//invoke start
-game.start()
 
 
 //TO DO
-//current glitch: when switching back to player 1, it gives player 2 another turn
+//current glitch: fix you got it wrong function
+//add in more images and question (up to 25?)
+//style!
+

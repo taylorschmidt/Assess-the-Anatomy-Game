@@ -3,7 +3,7 @@ html, body, .grid-container { height: 100%; margin: 0; }
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 2.5fr;
-  grid-template-rows: .5fr 1fr 1fr 1fr;
+  grid-template-rows: .5fr 1fr .5fr 1.5fr;
   gap: 1px 1px;
   grid-template-areas:
     "Title Title"
@@ -25,7 +25,7 @@ html, body, .grid-container { height: 100%; margin: 0; }
 
 /* For presentation only, no need to copy the code below */
 .grid-container * {
-  border: 2px solid black;
+  /* border: 2px solid black; */
   position: relative;
 }
 
@@ -36,16 +36,44 @@ html, body, .grid-container { height: 100%; margin: 0; }
 } */
 
 #a, #b, #c, #d {
-  margin: 5px 0px 0px 0px;
-  width: 49%;
-  height: 49%
+  margin: 10px 0px 0px 5px;
+  width: 46%;
+  height: 40%;
+  text-align: center;
+  font-size: 20px;
+  
 }
 .Title {
   text-align: center;
-  border-style: none;
+  border: none;
 }
 
 .image {
-    width: 75vw;
-    height: 50vw;
+    height: 40vw;
+    width: 40vw;
+    border: none;
+    
+}
+.Score-Card {
+  border: 2px solid black;
+  font-size: 20px
+}
+
+.Questions {
+  border: 2px solid black;
+  text-align: center;
+  padding: 10px 0px 0px 0px;
+  font-size: 20px;
+}
+
+.Responses{
+  border: 2px solid black;
+}
+.Photos {
+  text-align: center;
+  padding-top: 10px;
+  border-top: 2px solid black;
+}
+.gameStatus {
+  text-align: center;
 }
