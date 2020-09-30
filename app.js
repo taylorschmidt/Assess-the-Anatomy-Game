@@ -8,6 +8,10 @@ playerOneScoreBox.innerText = 'Player One\'s Score: ' + playerOneScore
 playerTwoScoreBox.innerText = 'Player Two\'s Score: ' + playerTwoScore
 let currentPlayer
 
+const refreshPage = () => {
+  window.location.reload()
+}
+
 
 
 
@@ -106,32 +110,34 @@ const questions = [
 ]
   
   const game = {
-    //start function
-    start: function () {
-      //when start button is clicked
-      currentPlayer = 'Player 1'
-      const startButton = document.querySelector('#start')
-      startButton.addEventListener('click', game.generateQuestion)
-      //invoke first question function
-    },
+    currentSet: null, 
 
+    //start function
+ 
     generateQuestion: function () {
+      const startButton = document.querySelector('#start')
+      startButton.innerText = 'Restart the Game'
+      startButton.addEventListener('click', refreshPage)
+
+
         console.log(currentPlayer)
         gameStatusBox.innerText = 'Time for ' + currentPlayer + '\'s turn!'
         const random = Math.floor(Math.random() * questions.length)
-        const currentSet = questions[random]
+        game.currentSet = questions[random]
+        console.log(game.currentSet)
+        console.log(game.currentSet.correctAns)
         //add question from randomly selected question
         const questionBox = document.querySelector('.Questions')
-        questionBox.innerText = currentSet.question
+        questionBox.innerText = game.currentSet.question
         //add answers from randomly selected question
         const aChoice = document.querySelector('#a')
-        aChoice.innerText = currentSet.answers.a
+        aChoice.innerText = game.currentSet.answers.a
         const bChoice = document.querySelector('#b')
-        bChoice.innerText = currentSet.answers.b
+        bChoice.innerText = game.currentSet.answers.b
         const cChoice = document.querySelector('#c')
-        cChoice.innerText = currentSet.answers.c
+        cChoice.innerText = game.currentSet.answers.c
         const dChoice = document.querySelector('#d')
-        dChoice.innerText = currentSet.answers.d
+        dChoice.innerText = game.currentSet.answers.d
       
       //add photo to photo class      
         const imgBox = document.querySelector('.Photos')
@@ -142,51 +148,55 @@ const questions = [
         newImg.src = questions[random].photo
         newImg.classList.add('image')
         imgBox.appendChild(newImg)
-     
-      //get answer function within main create question function
-        const getAnswer = (event) => {
-            if (event.target.innerText === currentSet.correctAns) {
-                gameStatusBox.innerText = 'You got it right!'
-                //change current player's score
-                if (currentPlayer === 'Player 1') {
-                    playerOneScore += 1
-                    playerOneScoreBox.innerText = 'Player One\'s Score: ' + playerOneScore
-                    setTimeout(game.checkWin, 1500)
-                } else if (currentPlayer === 'Player 2') {
-                    playerTwoScore += 1
-                    playerTwoScoreBox.innerText = 'Player Two\'s Score: ' + playerTwoScore
-                    setTimeout(game.checkWin, 1500)
-                }
-            } else if (event.target.innerText !== currentSet.correctAns) {
-                gameStatusBox.innerText = 'You got it wrong!'
-            //     setTimeout(game.switchPlayer, 1500)
-            // setTimeout(game.checkWin, 1500)
-             }
-          }
+ 
     //invoke getAnswer function for buttons
-        aChoice.addEventListener('click', getAnswer)
-        bChoice.addEventListener('click', getAnswer)
-        cChoice.addEventListener('click', getAnswer)
-        dChoice.addEventListener('click', getAnswer)
+        aChoice.addEventListener('click', game.getAnswer)
+        bChoice.addEventListener('click', game.getAnswer)
+        cChoice.addEventListener('click', game.getAnswer)
+        dChoice.addEventListener('click', game.getAnswer)
     
     //splice used index so it isn't used again
     questions.splice(random, 1)
     console.log('here are the number of questions left: ' + questions.length)
+    }, 
+    
+    getAnswer: function (event) {
+      console.log(event.target)
+      console.log(game.currentSet)
+        if (event.target.innerText === game.currentSet.correctAns) {
+            gameStatusBox.innerText = 'You got it right!'
+            //change current player's score
+            if (currentPlayer === 'Player 1') {
+                playerOneScore += 1
+                playerOneScoreBox.innerText = 'Player One\'s Score: ' + playerOneScore
+                setTimeout(game.checkWin, 1500)
+            } else if (currentPlayer === 'Player 2') {
+                playerTwoScore += 1
+                playerTwoScoreBox.innerText = 'Player Two\'s Score: ' + playerTwoScore
+                setTimeout(game.checkWin, 1500)
+            }
+        } else if (event.target.innerText !== game.currentSet.correctAns) {
+            gameStatusBox.innerText = 'You got it wrong. It is the ' + game.currentSet.correctAns + '!'
+        setTimeout(game.checkWin, 1500)
+         }
+      },
 
-    }, //end generateQuestion function
 
     checkWin: function() {
         if(playerOneScore < 3 && playerTwoScore < 3) {
             game.switchPlayer()
             console.log('no winner...switching player')
         } else if (playerOneScore >= 3) {
-            gameStatusBox.innerText = 'Player 1 Wins!'
-            // end game function
-            game.endGame()
+            gameStatusBox.innerText = 'Player 1 Wins! Click the Restart Game button to play again!'
+            //prevent player from continuing game
+            game.gameEnd()
+    
         } else if (playerTwoScore >= 3) {
-            gameStatusBox.innerText = 'Player 2 Wins!'
-            // end game function
-            game.endGame()
+            gameStatusBox.innerText = 'Player 2 Wins! Click the Restart Game button to play again!'
+            // prevent player from continuing game
+            game.gameEnd()
+            
+            
         } 
     },
 
@@ -200,15 +210,17 @@ const questions = [
         setTimeout(game.generateQuestion, 1000)
     },
 
-    endGame: function() {
-      const title = document.querySelector('.Title')
-      const restartButton = document.createElement('button')
-      restartButton.innerText = 'Restart Game'
-      title.appendChild(restartButton)
-      const refreshPage = () => {
-        window.location.reload()
-      }
-      restartButton.addEventListener('click', refreshPage)
+    start: function () {
+      //when start button is clicked
+      currentPlayer = 'Player 1'
+      const startButton = document.querySelector('#start')
+      startButton.addEventListener('click', game.generateQuestion)
+      //invoke first question function
+    },
+
+    gameEnd: function () {
+      return game
+
     }
   } //end game object
   
@@ -217,8 +229,10 @@ const questions = [
 
 
 
-///////////////////TO DO///////////////////////
-//current glitch: fix you got it wrong function
+///////////////////TO DO//////////////////////
+//prevent player from continuing game
+
 //add in more images and question (up to 25?)
-//style!
+//style! (add on bootstrap?)
+//add skeleton pngs in a flexbox?
 

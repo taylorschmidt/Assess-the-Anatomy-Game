@@ -2,72 +2,102 @@ html, body, .grid-container { height: 100%; margin: 0; }
 
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 2.5fr;
+  grid-template-columns: .2fr .75fr 1.25fr .2fr;
   grid-template-rows: .5fr 1fr .5fr 1.5fr;
   gap: 1px 1px;
   grid-template-areas:
-    "Title Title"
-    "Score-Card Photos"
-    "Questions Photos"
-    "Responses Photos";
+    "Title Title Title Title"
+    "spaceOne Score-Card Photos spaceTwo"
+    "spaceOne Questions Photos spaceTwo"
+    "spaceOne Responses Photos spaceTwo";
 }
-
 .Title { grid-area: Title; }
-
-.Score-Card { grid-area: Score-Card; }
-
-.Questions { grid-area: Questions; }
-
+.spaceOne { grid-area: spaceOne; }
+.spaceTwo { grid-area: spaceTwo; }
 .Photos { grid-area: Photos; }
-
+.Score-Card { grid-area: Score-Card; }
+.Questions { grid-area: Questions; }
 .Responses { grid-area: Responses; }
 
-
-/* For presentation only, no need to copy the code below */
-.grid-container * {
-  /* border: 2px solid black; */
-  position: relative;
+    font-family: 'Nanum Gothic', sans-serif;
 }
+.spaceTwo { grid-area: spaceTwo; }
+.Title { grid-area: Title; }
+.Score-Card { grid-area: Score-Card; }
+.Questions { grid-area: Questions; }
+.Responses { grid-area: Responses; }
+.spaceOne { grid-area: spaceOne; }
+.Photos { grid-area: Photos; }
 
-/* .grid-container *:after {
-  position: absolute;
-  top: 0;
-  left: 0;
-} */
+
 
 #a, #b, #c, #d {
-  margin: 10px 0px 0px 5px;
   width: 46%;
   height: 40%;
   text-align: center;
   font-size: 20px;
-  
+  border-radius: 8px;
 }
+#start {
+  border-radius: 8px;
+}
+#a {
+  margin-top: 15px;
+  margin-left: 12px;
+}
+#c {
+  margin-bottom: 15px;
+  margin-top: 5px;
+  margin-left: 12px;
+}
+
 .Title {
   text-align: center;
   border: none;
+  padding-bottom: 20px;
+  background-image: linear-gradient(#FFE6E6, white);
+  display:inline;
+}
+.skeletonLeft {
+  float:left;
+  margin-left: 200px;
+  height: 10vw;
+  width: 10vw;
+}
+.skeletonRight {
+  float:right;
+  margin-right: 200px;
+  height: 10vw;
+  width: 10vw;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
 }
 
+
+.spaceOne, .spaceTwo {
+  background: white;
+}
 .image {
-    height: 40vw;
-    width: 40vw;
+    height: 35vw;
+    width: 35vw;
     border: none;
+    position: relative;
     
 }
 .Score-Card {
-  border: 2px solid black;
+  border: 2px solid grey;
   font-size: 20px
 }
 
 .Questions {
-  border: 2px solid black;
+  border: 2px solid grey;
   text-align: center;
   padding: 10px 0px 0px 0px;
   font-size: 20px;
 }
 
 .Responses{
-  border: 2px solid black;
+  border: 2px solid grey;
 }
 #a:hover, #b:hover, #c:hover, #d:hover, #start:hover {
   background-color: #FFDBDB
@@ -75,7 +105,11 @@ html, body, .grid-container { height: 100%; margin: 0; }
 .Photos {
   text-align: center;
   padding-top: 10px;
-  border-top: 2px solid black;
+  border-top:2px solid grey;
+  border-left: 2px solid grey;
+  border-right: 2px solid grey;
+  position: relative;
+  
 }
 .gameStatus {
   text-align: center;
@@ -84,3 +118,8 @@ html, body, .grid-container { height: 100%; margin: 0; }
   border-bottom: 2px solid black;
   background:  #FFDBDB
 }
+
+.oneScore, .twoScore {
+  padding-left: 10px;
+}
+
