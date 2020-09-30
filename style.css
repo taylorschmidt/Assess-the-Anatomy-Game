@@ -69,6 +69,9 @@ html, body, .grid-container { height: 100%; margin: 0; }
 .Responses{
   border: 2px solid black;
 }
+#a:hover, #b:hover, #c:hover, #d:hover, #start:hover {
+  background-color: #FFDBDB
+}
 .Photos {
   text-align: center;
   padding-top: 10px;
@@ -76,4 +79,8 @@ html, body, .grid-container { height: 100%; margin: 0; }
 }
 .gameStatus {
   text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid black;
+  background:  #FFDBDB
 }

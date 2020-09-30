@@ -99,7 +99,10 @@ const questions = [
   },
   correctAns: 'Patella',
   photo: 'https://images-na.ssl-images-amazon.com/images/I/41WlaUQp7gL._SX342_.jpg'
-}
+},
+//two more bone questions
+//ten more muscle questions
+
 ]
   
   const game = {
@@ -114,6 +117,7 @@ const questions = [
 
     generateQuestion: function () {
         console.log(currentPlayer)
+        gameStatusBox.innerText = 'Time for ' + currentPlayer + '\'s turn!'
         const random = Math.floor(Math.random() * questions.length)
         const currentSet = questions[random]
         //add question from randomly selected question
@@ -156,7 +160,7 @@ const questions = [
             } else if (event.target.innerText !== currentSet.correctAns) {
                 gameStatusBox.innerText = 'You got it wrong!'
             //     setTimeout(game.switchPlayer, 1500)
-            setTimeout(game.checkWin, 1500)
+            // setTimeout(game.checkWin, 1500)
              }
           }
     //invoke getAnswer function for buttons
@@ -213,7 +217,7 @@ const questions = [
 
 
 
-//TO DO
+///////////////////TO DO///////////////////////
 //current glitch: fix you got it wrong function
 //add in more images and question (up to 25?)
 //style!
