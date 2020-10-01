@@ -298,18 +298,14 @@ const game = {
 
    
     gameEnd: function () {
-      aChoice.innerText = ''
-      bChoice.innerText = ''
-      cChoice.innerText = ''
-      dChoice.innerText = ''
-      aChoice.removeEventListener('click', game.getAnswer)
-      bChoice.removeEventListener('click', game.getAnswer)
-      cChoice.removeEventListener('click', game.getAnswer)
-      dChoice.removeEventListener('click', game.getAnswer)
       responsesBox.removeChild(aChoice)
       responsesBox.removeChild(bChoice)
       responsesBox.removeChild(cChoice)
       responsesBox.removeChild(dChoice)
+      const imgBox = document.querySelector('.Photos')
+        while(imgBox.firstChild) {
+            imgBox.removeChild(imgBox.firstChild)
+        }
   
     }
   } //end game object
