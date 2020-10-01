@@ -34,15 +34,16 @@ body {
   background-image: linear-gradient(#d6d6d6, white);
 }
 h1 {
-  font-size: 4vw
+  font-size: 10vh;
+  font-family: 'Nanum Pen Script', cursive;
 }
 h5 {
-  font-size: 1.5vw
+  font-size: 1.5vw;
+  margin-top: -35px;
 }
 .Title {
   text-align: center;
   border: none;
-  margin-top: -10px;
   padding-bottom: 1vw;
   background-image: linear-gradient(white, #d6d6d6);
   display:inline;
