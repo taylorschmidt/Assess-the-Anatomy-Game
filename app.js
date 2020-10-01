@@ -18,9 +18,7 @@ playerOneScoreBox.innerText = 'Player One\'s Score: ' + playerOneScore
 playerTwoScoreBox.innerText = 'Player Two\'s Score: ' + playerTwoScore
 let currentPlayer
 
-const refreshPage = () => {
-  window.location.reload()
-}
+
 
 
 
@@ -191,7 +189,39 @@ const questions = [
   correctAns: 'Deltoid',
   photo: 'https://i.imgur.com/Sc5Bm8G.png'
 },
-//if time, add more muscles questions
+{  
+  question: 'What bones are pictured?',
+  answers: {
+    a: 'Carpals',
+    b: 'Phalanges',
+    c: 'Tarsals',
+   d: 'Metatarsals'
+  },
+  correctAns: 'Tarsals',
+  photo: 'https://nursinglecture.com/wp-content/uploads/2019/06/Tarsals.png'
+},
+{  
+  question: 'What muscle is pictured?',
+  answers: {
+    a: 'Dorsal',
+    b: 'Latissimus',
+    c: 'Deltoid',
+   d: 'Trapezius'
+  },
+  correctAns: 'Trapezius',
+  photo: 'https://d1s2fu91rxnpt4.cloudfront.net/mainsite/m20171204234513/display/Screen%2520Shot%25202017-12-04%2520at%25203.40.10%2520PM.png'
+},
+{  
+  question: 'What muscle group is pictured?',
+  answers: {
+    a: 'Illiopsoas',
+    b: 'Hamstrings',
+    c: 'Ishcial',
+   d: 'Pelvis dorsi'
+  },
+  correctAns: 'Illiopsoas',
+  photo:'https://i.imgur.com/ocC9RGW.png'
+},
 ]
 
 const game = {
@@ -200,9 +230,11 @@ const game = {
     //start function
  
     generateQuestion: function () {
+      console.log(questions.length)
+
       const startButton = document.querySelector('#start')
       startButton.innerText = 'Restart the Game'
-      startButton.addEventListener('click', refreshPage)
+      startButton.addEventListener('click', game.refreshPage)
 
 
         console.log(currentPlayer)
@@ -302,11 +334,26 @@ const game = {
       responsesBox.removeChild(bChoice)
       responsesBox.removeChild(cChoice)
       responsesBox.removeChild(dChoice)
+      // aChoice.innerText=''
+      // bChoice.innerText=''
+      // cChoice.innerText=''
+      // dChoice.innerText=''
       const imgBox = document.querySelector('.Photos')
         while(imgBox.firstChild) {
             imgBox.removeChild(imgBox.firstChild)
         }
   
+    },
+    refreshPage: function () {
+      playerOneScore = 0
+      playerTwoScore = 0
+      game.generateQuestion()
+      playerOneScoreBox.innerText = 'Player One\'s Score: ' + playerOneScore
+      playerTwoScoreBox.innerText = 'Player Two\'s Score: ' + playerTwoScore
+      responsesBox.appendChild(aChoice)
+      responsesBox.appendChild(bChoice)
+      responsesBox.appendChild(cChoice)
+      responsesBox.appendChild(dChoice)
     }
   } //end game object
   
