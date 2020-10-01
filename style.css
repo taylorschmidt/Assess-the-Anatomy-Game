@@ -4,7 +4,6 @@ html, body, .grid-container { height: 100%; margin: 0; }
   display: grid;
   grid-template-columns: .2fr .75fr 1.25fr .2fr;
   grid-template-rows: .5fr 1fr .5fr 1.5fr;
-  gap: 1px 1px;
   grid-template-areas:
     "Title Title Title Title"
     "spaceOne Score-Card Photos spaceTwo"
@@ -18,9 +17,6 @@ html, body, .grid-container { height: 100%; margin: 0; }
 .Score-Card { grid-area: Score-Card; }
 .Questions { grid-area: Questions; }
 .Responses { grid-area: Responses; }
-
-    font-family: 'Nanum Gothic', sans-serif;
-}
 .spaceTwo { grid-area: spaceTwo; }
 .Title { grid-area: Title; }
 .Score-Card { grid-area: Score-Card; }
@@ -29,97 +25,108 @@ html, body, .grid-container { height: 100%; margin: 0; }
 .spaceOne { grid-area: spaceOne; }
 .Photos { grid-area: Photos; }
 
-
-
-#a, #b, #c, #d {
-  width: 46%;
-  height: 40%;
-  text-align: center;
-  font-size: 20px;
-  border-radius: 8px;
+body {
+  font-family: 'Nanum Gothic', sans-serif;
+  color: #545454;
+  overflow: hidden;
 }
-#start {
-  border-radius: 8px;
-}
-#a {
-  margin-top: 15px;
-  margin-left: 12px;
-}
-#c {
-  margin-bottom: 15px;
-  margin-top: 5px;
-  margin-left: 12px;
+.spaceOne, .spaceTwo {
+  background-image: linear-gradient(#d6d6d6, white);
 }
 
 .Title {
   text-align: center;
   border: none;
-  padding-bottom: 20px;
-  background-image: linear-gradient(#FFE6E6, white);
+  padding-bottom: 1vw;
+  background-image: linear-gradient(white, #d6d6d6);
   display:inline;
 }
 .skeletonLeft {
+  margin-top: 2vw;
   float:left;
-  margin-left: 200px;
-  height: 10vw;
-  width: 10vw;
+  margin-left: 23vw;
+  height: 11vw;
+  width: 11vw;
 }
 .skeletonRight {
   float:right;
-  margin-right: 200px;
-  height: 10vw;
-  width: 10vw;
+  margin-top: 2vw;
+  margin-right: 23vw;
+  height: 11vw;
+  width: 11vw;
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
-}
-
-
-.spaceOne, .spaceTwo {
-  background: white;
 }
 .image {
     height: 35vw;
     width: 35vw;
     border: none;
     position: relative;
-    
 }
 .Score-Card {
-  border: 2px solid grey;
-  font-size: 20px
+  border: 2px solid #474747;
+  font-size: 2vw;
 }
 
 .Questions {
-  border: 2px solid grey;
+  border: 2px solid #474747;
   text-align: center;
-  padding: 10px 0px 0px 0px;
-  font-size: 20px;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  font-size: 2vw;
+  background-color: #defaf4;
+  border-top: none;
 }
 
 .Responses{
-  border: 2px solid grey;
+  border: 2px solid #474747;
+  border-top: none
 }
-#a:hover, #b:hover, #c:hover, #d:hover, #start:hover {
-  background-color: #FFDBDB
-}
+
 .Photos {
   text-align: center;
   padding-top: 10px;
-  border-top:2px solid grey;
-  border-left: 2px solid grey;
-  border-right: 2px solid grey;
+  border:2px solid #474747;
+  border-left: none;
   position: relative;
-  
 }
 .gameStatus {
+  background: #defaf4;
+  position: relative;
+  margin: auto;
   text-align: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid black;
-  background:  #FFDBDB
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  border-bottom: 2px solid #474747;
 }
-
 .oneScore, .twoScore {
   padding-left: 10px;
+  background: white
 }
 
+#a, #b, #c, #d {
+  position: relative;
+  width: 13vw;
+  height: 8.5vw;
+  text-align: center;
+  vertical-align:top;
+  font-size: 2vw;
+  border-radius: 8px;
+  font-family: 'Nanum Gothic', sans-serif;
+  color: #474747;
+  margin-top: 2%;
+  margin-left: 2%
+}
+#a, #c {
+  margin-left: 5.5%;
+}
+#start {
+  border-radius: 8px;
+  background-color: #defaf4
+}
+#a:hover, #b:hover, #c:hover, #d:hover {
+  background-color: #defaf4
+}
+#start:hover {
+  background-color: #d6d6d6
+}

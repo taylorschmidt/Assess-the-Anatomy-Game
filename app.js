@@ -2,6 +2,7 @@
 const gameStatusBox = document.querySelector('.gameStatus')
 const playerOneScoreBox = document.querySelector('.oneScore')
 const playerTwoScoreBox = document.querySelector('.twoScore')
+const responsesBox = document.querySelector('.Responses')
 const questionBox = document.querySelector('.Questions')
 const aChoice = document.querySelector('#a')
 const bChoice = document.querySelector('#b')
@@ -122,7 +123,7 @@ const questions = [
     d: 'Scapula'
   },
   correctAns: 'Scapula',
-  photo: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fkidport.com%2FRefLib%2FScience%2FHumanBody%2FSkeletalSystem%2FSacrum.htm&psig=AOvVaw2tRbm7Rnq0rJJwtYCjDAEG&ust=1601591983731000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCODxpbb_kewCFQAAAAAdAAAAABAD'
+  photo: 'https://i.imgur.com/s2hXx9V.jpg'
 },
 {
   question: 'What bone is pictured?',
@@ -133,13 +134,13 @@ const questions = [
     d: 'Ulna'
   },
   correctAns: 'Clavicle',
-  photo: 'https://www.tornado-studios.com/sites/default/files/styles/slider_full/public/products/2178/gallery/human_clavicle_bone_collarbone_01_thumbnail_square_0000.jpg?itok=HKzD7GUA'
+  photo: 'https://cdn.shopify.com/s/files/1/1467/6660/products/HumanClavicle--Main__SHN-01__1.jpg?v=1534882329'
 },
 {
   question: 'What muscle is pictured?',
   answers: {
     a: 'Sartorius',
-    b: 'Gastrocnemius',
+    b: 'Soleus',
     c: 'Quadricep',
     d: 'Biceps femoris'
   },
@@ -149,13 +150,13 @@ const questions = [
 {
   question: 'What muscle is pictured?',
   answers: {
-    a: 'Gastrocnemius',
+    a: 'Shinus',
     b: 'Tibialis anterior',
     c: 'Rectus femoris',
     d: 'Soleus'
   },
   correctAns: 'Tibialis anterior',
-  photo: 'https://i.imgur.com/lXG5xLP.png'
+  photo: 'https://i.imgur.com/HCO9UA2.png'
 },
 {
   question: 'What muscle is pictured?',
@@ -174,9 +175,9 @@ const questions = [
     a: 'Sartorius',
     b: 'Dorsi',
     c: 'Obliques',
-   d: 'Ab rectus'
+   d: 'Abdominous rectus'
   },
-  correctAns: 'Ab rectus',
+  correctAns: 'Abdominous rectus',
   photo: 'https://i.imgur.com/PUHoZKI.png'
 },
 {  
@@ -208,8 +209,6 @@ const game = {
         gameStatusBox.innerText = 'Time for ' + currentPlayer + '\'s turn!'
         const random = Math.floor(Math.random() * questions.length)
         game.currentSet = questions[random]
-        console.log(game.currentSet)
-        console.log(game.currentSet.correctAns)
         //add question from randomly selected question
         questionBox.innerText = game.currentSet.question
         //add answers from randomly selected question
@@ -237,12 +236,9 @@ const game = {
     
     //splice used index so it isn't used again
     questions.splice(random, 1)
-    console.log('here are the number of questions left: ' + questions.length)
     }, 
     
     getAnswer: function (event) {
-      console.log(event.target)
-      console.log(game.currentSet)
         if (event.target.innerText === game.currentSet.correctAns) {
             gameStatusBox.innerText = 'You got it right!'
             //change current player's score
@@ -267,12 +263,14 @@ const game = {
             game.switchPlayer()
             console.log('no winner...switching player')
         } else if (playerOneScore >= 3) {
-            gameStatusBox.innerText = 'Player 1 Wins! Click the Restart Game button to play again!'
+            gameStatusBox.innerText = 'Player 1 Wins!'
+            questionBox.innerText = ' Click the restart button to play again!'
             //prevent player from continuing game
             game.gameEnd()
     
         } else if (playerTwoScore >= 3) {
-            gameStatusBox.innerText = 'Player 2 Wins! Click the Restart Game button to play again!'
+            gameStatusBox.innerText = 'Player 2 Wins!'
+            questionBox.innerText = ' Click the restart button to play again!'
             // prevent player from continuing game
             game.gameEnd()
             
@@ -304,11 +302,14 @@ const game = {
       bChoice.innerText = ''
       cChoice.innerText = ''
       dChoice.innerText = ''
-      questionBox.innerText=''
       aChoice.removeEventListener('click', game.getAnswer)
       bChoice.removeEventListener('click', game.getAnswer)
       cChoice.removeEventListener('click', game.getAnswer)
       dChoice.removeEventListener('click', game.getAnswer)
+      responsesBox.removeChild(aChoice)
+      responsesBox.removeChild(bChoice)
+      responsesBox.removeChild(cChoice)
+      responsesBox.removeChild(dChoice)
   
     }
   } //end game object
@@ -318,10 +319,5 @@ const game = {
 
 
 
-///////////////////TO DO//////////////////////
-//prevent player from continuing game
 
-//add in more images and question (up to 25?)
-//style! (add on bootstrap?)
-//add skeleton pngs in a flexbox?
 
