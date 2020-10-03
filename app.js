@@ -323,6 +323,7 @@ const game = {
     },
     //refersh page function
     refreshPage: function () {
+      currentPlayer = 'Player 1'
       playerOneScore = 0
       playerTwoScore = 0
       game.generateQuestion()
