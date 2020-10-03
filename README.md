@@ -14,14 +14,14 @@ Once the game begins, a random number generator selects a question from my quest
 
 ## Approach: 
 
-# Overview:
+#### Overview:
 Using Object Oriented Programming, I wrote a variety of functions that enable random question display on the game board, a counter score function if the question answered is correct, a switch player function, and an end game function. These functions all work in tandem after the game is initiated by the game.start() function which is invoked after the "start game" button is pressed by the user.
 
-# User Stories:
+#### User Stories:
 As a user I expect to see a start game function. I expect to see a question to appear that is simple to read and an image that clearly depicts a part of human anatomy. I expect to be able to choose the answer to the trivia question by pressing a button. If I get the question correct, I expect to see my turn increase. I expect the next person's turn to follow. Once a player's score reaches 3, I expect to be able to replay the game.
 
 
-# Development Plan:
+#### Development Plan:
 * Determine game theme and create wireframe.
 * Pseudocode game object with various functions required for game play.
 * Create an array of trivia questions with possible answers, the correct answer, and an image.
