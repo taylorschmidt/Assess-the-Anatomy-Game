@@ -1,4 +1,4 @@
-# ProjectOne
+# Project One
 
 ### Demo:
 [Assess The Anatomy](https://taylorschmidt.github.io/ProjectOne/)
@@ -13,6 +13,7 @@ Once the game begins, a random number generator selects a question from my quest
 * Javascript
 
 ## Approach: 
+
 # Overview:
 Using Object Oriented Programming, I wrote a variety of functions that enable random question display on the game board, a counter score function if the question answered is correct, a switch player function, and an end game function. These functions all work in tandem after the game is initiated by the game.start() function which is invoked after the "start game" button is pressed by the user.
 
