@@ -1,4 +1,6 @@
-html, body, .grid-container { height: 95%; margin: 0; }
+html, body, .grid-container { 
+  height: 95%; margin: 0; 
+}
 
 .grid-container {
   display: grid;
