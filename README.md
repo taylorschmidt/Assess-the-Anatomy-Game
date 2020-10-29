@@ -1,7 +1,7 @@
 # Project One
 
 ### Demo:
-[Assess The Anatomy](https://taylorschmidt.github.io/ProjectOne/)
+[Assess The Anatomy](https://taylorschmidt.github.io/Assess-the-Anatomy-Game/)
 
 ## Concept
 Welcome to Assess the Anatomy, a two-player trivia game that tests your human anatomy knowledge!
